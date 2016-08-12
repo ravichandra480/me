@@ -37,7 +37,7 @@ module.exports = function(grunt) {
             build:{
                 cwd: 'src/',
                 src: ['**/**'],
-                dest: '/',
+                dest: 'profile/',
                 expand: true
             }
         },
