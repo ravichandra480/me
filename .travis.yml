@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "0.8"
-before_install: npm install grunt-cli
+before_install:
+     - npm update -g npm
+     - npm install grunt-cli
 install: npm install
 before_script: grunt build
