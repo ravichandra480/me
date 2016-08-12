@@ -10,3 +10,12 @@ install:
     - bower update
 before_script:
     - grunt build
+after_sucess:
+  - npm run gh-pages-travis
+env:
+  global:
+    - SSH_KEY="f2870c2b22c455c0aeaa5900c56af22a3df074aa"
+    - GIT_NAME="Ravi Chandra Ravulapati"
+    - GIT_EMAIL="ravichandra480@gmail.com"
+    - SOURCE_DIR="profile"
+    - DEPLOY_BRANCH="gh-pages"
