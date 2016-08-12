@@ -9,7 +9,6 @@
       }
   },
   "scripts": {
-    "test": "grunt test",
     "build": "grunt build"
   },
   "keywords": [
