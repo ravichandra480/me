@@ -4,5 +4,7 @@ node_js:
 before_install:
      - npm update -g npm
      - npm install grunt-cli
-install: npm install
+install: 
+    - npm install
+    - bower install
 before_script: grunt build
