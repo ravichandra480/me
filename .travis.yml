@@ -5,13 +5,13 @@ before_install:
      - npm update -g npm
      - npm install grunt-cli
      - npm install bower
+     - npm install gh-pages-travis
 install:
     - npm install
     - bower update
 before_script:
     - grunt build
-after_sucess:
-  - npm run gh-pages-travis
+    - npm run gh-pages-travis
 env:
   global:
     - SSH_KEY="f2870c2b22c455c0aeaa5900c56af22a3df074aa"
