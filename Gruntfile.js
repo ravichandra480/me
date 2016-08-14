@@ -21,9 +21,12 @@ module.exports = function (grunt) {
         },
         watch: {
             js: {
-                files: ['src/js/*.js'],
-                tasks: ['copy:dev']
+                files: ['src/js/*.js', 'src/**/**'],
+                tasks: ['clean:preBuild', 'copy:dev', 'wiredep', 'includeSource']
             },
+            options: {
+                livereload: 1337
+            }
         },
         copy: {
             dev: {
@@ -67,6 +70,9 @@ module.exports = function (grunt) {
             options: {
                 logConcurrentOutput: true
             }
+        },
+        clean: {
+            preBuild: ['dist/profile']
         }
     });
 
@@ -77,9 +83,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-include-source');
     grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-html2js');
 
     // Default task(s).
-    grunt.registerTask('default', ['copy:dev', 'wiredep', 'includeSource', 'concurrent']);
+    grunt.registerTask('default', ['clean:preBuild', 'copy:dev', 'wiredep', 'includeSource', 'concurrent']);
     grunt.registerTask('build', ['copy:build', 'wiredep']);
 
 };

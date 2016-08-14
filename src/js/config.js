@@ -6,13 +6,17 @@
     }
     angular.module('app.config', [
         'ngComponentRouter',
-        'profile.home'
+        'profile.home',
+        'profile.header',
+        'profile.footer'
     ])
     .config(config)
     .value('$routerRootComponent', 'profileView')
     .component('profileView', {
         template:
-        '<ng-outlet></ng-outlet>',
+            '<profile-header></profile-header>' +
+            '<ng-outlet></ng-outlet>' +
+            '<profile-footer></profile-footer>',
         $routeConfig: [
             {
                 path: '/',

@@ -1,7 +1,17 @@
 (function (angular) {
-    angular.module('profile.home', [])
+    angular.module('profile.home', [
+        'profile.about'
+    ])
     .value('$routerRootComponent', 'profileHome')
     .component('profileHome', {
-        template: '<p>Home Page</p>'
+        templateUrl: 'pages/home/html/home.html',
+        $routeConfig: [
+            {
+                path: '/',
+                name: 'About',
+                component: 'profileAbout',
+                useAsDefault: true
+            }
+        ]
     });
 })(angular);
