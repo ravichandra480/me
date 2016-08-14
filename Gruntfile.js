@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     var env_name = process.env.TT || 'dev';
     var config = grunt.file.readJSON('package.json');
@@ -8,23 +8,21 @@ module.exports = function(grunt) {
     grunt.initConfig({
         base: env.base,
         connect: {
+            options: {
+                port: 9000,
+                base: 'dist',
+                open: true,
+                keepalive: true
+            },
+
             server: {
-                options: {
-                    port: 8000,
-                    base: 'dist',
-                    keepalive: true,
-                    open: {
-                        target: 'http://localhost:9000'
-                    }
-                }
+
             }
         },
         watch: {
             js: {
-                files: 'src/*.js',
-                options: {
-                    livereload: true,
-                }
+                files: ['src/js/*.js'],
+                tasks: ['copy:dev']
             },
         },
         copy: {
@@ -47,6 +45,28 @@ module.exports = function(grunt) {
                     'dist/<%= base %>/*.html'
                 ]
             }
+        },
+        includeSource: {
+            options: {
+                basePath: 'dist/<%= base %>',
+                baseUrl: '',
+                templates: {
+                    html: {
+                        js: '<script src="{filePath}"></script>'
+                    }
+                }
+            },
+            dev: {
+                files: {
+                    'dist/<%= base %>/index.html': 'dist/<%= base %>/index.html'
+                }
+            }
+        },
+        concurrent: {
+            watcher: ['watch', 'connect'],
+            options: {
+                logConcurrentOutput: true
+            }
         }
     });
 
@@ -55,9 +75,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-bower-concat');
     grunt.loadNpmTasks('grunt-wiredep');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-include-source');
+    grunt.loadNpmTasks('grunt-concurrent');
 
     // Default task(s).
-    grunt.registerTask('default', ['copy:dev', 'wiredep', 'connect', 'watch:js']);
+    grunt.registerTask('default', ['copy:dev', 'wiredep', 'includeSource', 'concurrent']);
     grunt.registerTask('build', ['copy:build', 'wiredep']);
 
 };

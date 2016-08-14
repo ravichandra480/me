@@ -1,0 +1,57 @@
+{
+    "node": true,
+    "curly": false,
+    "eqnull": true,
+    "eqeqeq": true,
+    "undef": true,
+    "trailing": true,
+    "jquery": true,
+    "browser": true,
+    "devel": true,
+    "maxparams":20,
+    "maxdepth": 3,
+    "validthis": true,
+
+    "globals": {
+        "escape": true,
+        "jQuery": false,
+        "angular": false,
+        "CDN": false,
+        "Modernizr": false,
+        "conditionizr": true,
+        "CryptoJS": false,
+        "core": false,
+        "Swiper": false,
+        "env": false,
+        "googletag": false,
+        "_": false,
+        // GruntFile
+        "module": false,
+        "require": false,
+        "middlewares": false,
+        // Jasmine
+        "jasmine": false,
+        "describe": false,
+        "describe": false,
+        "xdescribe": false,
+        "fdescribe": false,
+        "beforeEach": false,
+        "afterEach": false,
+        "it": false,
+        "fit": false,
+        "iit": false,
+        "xit": false,
+        "expect": false,
+        "spyOn": false,
+        "beforeAll": false,
+        "afterAll": false,
+        // Prism
+        "Prism": true,
+        // Angular mocks
+        "inject": false,
+        // Protractor
+        "browser": false,
+        "element": false,
+        "by": false
+    }
+}

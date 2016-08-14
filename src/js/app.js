@@ -1,7 +1,8 @@
-(function(angular){
+(function (angular) {
     angular.module('profile', [
         'app.config',
-        'app.run'
+        'app.run',
+        'app.pages'
     ]);
 
     angular.module('app.pages', [
