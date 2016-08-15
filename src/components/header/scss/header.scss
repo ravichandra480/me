@@ -1,0 +1,11 @@
+
+.header {
+    &--title {
+        border-bottom: 1px solid darken($body-bg, 20%);
+        margin-bottom: 20px;
+        h1{
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+    }
+}

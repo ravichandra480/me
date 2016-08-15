@@ -1,0 +1,11 @@
+@import 'variables';
+@import 'themes';
+@import 'https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700,700i&subset=latin-ext';
+
+// Components
+@import '../components/header/scss/header';
+@import '../components/footer/scss/footer';
+
+// Pages
+@import '../pages/about/scss/about';
+@import '../pages/home/scss/home';

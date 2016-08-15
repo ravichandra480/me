@@ -24,6 +24,10 @@ module.exports = function (grunt) {
                 files: ['src/js/*.js', 'src/**/**'],
                 tasks: ['clean:preBuild', 'copy:dev', 'wiredep', 'includeSource']
             },
+            scss: {
+                files: ['src/scss/*.scss', 'src/**/**'],
+                tasks: ['clean:preBuild', 'copy:dev', 'sass:dist', 'wiredep', 'includeSource']
+            },
             options: {
                 livereload: 1337
             }
@@ -31,7 +35,7 @@ module.exports = function (grunt) {
         copy: {
             dev: {
                 cwd: 'src/',
-                src: ['**/**'],
+                src: ['!scss', '**/**'],
                 dest: 'dist/<%= base %>/',
                 expand: true
             },
@@ -73,6 +77,16 @@ module.exports = function (grunt) {
         },
         clean: {
             preBuild: ['dist/profile']
+        },
+        sass: {                              // Task
+            dist: {                            // Target
+                options: {                       // Target options
+                    style: 'expanded'
+                },
+                files: {                         // Dictionary of files
+                    'dist/profile/css/deploy.css': 'src/scss/deploy.scss',       // 'destination': 'source'
+                }
+            }
         }
     });
 
@@ -85,9 +99,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-html2js');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
     // Default task(s).
-    grunt.registerTask('default', ['clean:preBuild', 'copy:dev', 'wiredep', 'includeSource', 'concurrent']);
+    grunt.registerTask('default', ['clean:preBuild', 'copy:dev', 'sass:dist', 'wiredep', 'includeSource', 'concurrent']);
     grunt.registerTask('build', ['copy:build', 'wiredep']);
 
 };
