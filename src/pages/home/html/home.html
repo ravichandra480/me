@@ -1,2 +1,11 @@
-<a ng-link="['About']">About</a>
+<!-- <a ng-link="['About']">About</a> -->
+
+<section class="profile-home">
+    <ul class="profile-home--tags">
+        <li ng-repeat="tag in $ctrl.tags" class="{{::tag.class}}">
+            <a ng-link="[tag.url]" ng-bind="tag.title"></a>
+            <span ng-if="!$last">,</span>
+        </li>
+    </ul>
+</section>
 <ng-outlet></ng-outlet>

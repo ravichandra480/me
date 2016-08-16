@@ -1,3 +1,50 @@
-body {
-    background: #000;
+
+.profile-home {
+    text-align: center;
+    padding: 10% 0;
+
+    &--tags {
+        list-style: none;
+        width: 650px;
+        margin: 0 auto;
+
+        li {
+            display: inline-block;
+            padding: 10px;
+            font-size: 40px;
+            color: lighten(#000, 80%);
+
+            a {
+                color: inherit;
+                cursor: pointer;
+            }
+        }
+
+        &__color {
+
+            &0 {
+                color: #f44336 !important;
+            }
+
+            &1 {
+                color: #9C27B0 !important;
+            }
+
+            &2 {
+                color: #2196F3 !important;
+            }
+
+            &3 {
+                color: #009688 !important;
+            }
+
+            &4 {
+                color: #795548 !important;
+            }
+
+            &5 {
+                color: #FFC107 !important;
+            }
+        }
+    }
 }
