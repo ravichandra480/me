@@ -3,16 +3,33 @@ module.exports = function (grunt) {
     var env_name = process.env.TT || 'dev';
     var config = grunt.file.readJSON('package.json');
     var env = config.environments[env_name];
+    var modRewrite = require('connect-modrewrite');
+    var serveStatic = require('serve-static');
 
     // Project configuration.
     grunt.initConfig({
         base: env.base,
         connect: {
             options: {
-                port: 9000,
+                port: 8000,
                 base: 'dist',
                 open: true,
-                keepalive: true
+                keepalive: true,
+                middleware: function (connect, options, middlewares) {
+                    middlewares.unshift(function (req, res, next) {
+                        res.setHeader('Access-Control-Allow-Origin', '*');
+                        res.setHeader('Access-Control-Allow-Methods', '*');
+                        return next();
+                    });
+
+                    middlewares.push(modRewrite(['^[^\\.]*$ /' + env.base + '/index.html [L]'])); //Matches everything that does not contain a '.' (period)
+                    options.base.forEach(function (base) {
+                        middlewares.push(serveStatic(base));
+                    });
+
+                    middlewares.push(require('connect-livereload')());
+                    return middlewares;
+                }
             },
 
             server: {
@@ -35,7 +52,7 @@ module.exports = function (grunt) {
         copy: {
             dev: {
                 cwd: 'src/',
-                src: ['!scss', '**/**'],
+                src: ['!scss', '**/**', '!tests', '!**/**/tests'],
                 dest: 'dist/<%= base %>/',
                 expand: true
             },

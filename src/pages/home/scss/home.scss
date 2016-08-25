@@ -1,18 +1,18 @@
 
 .profile-home {
     text-align: center;
-    padding: 10% 0;
+    padding: 8% 0;
 
     &--tags {
         list-style: none;
-        width: 650px;
-        margin: 0 auto;
+        margin: 0 10%;
 
         li {
             display: inline-block;
             padding: 10px;
-            font-size: 40px;
+            font-size: 56px;
             color: lighten(#000, 80%);
+            font-weight: 300;
 
             a {
                 color: inherit;

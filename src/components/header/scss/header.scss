@@ -1,11 +1,17 @@
 
 .header {
     &--title {
-        border-bottom: 1px solid darken($body-bg, 20%);
-        margin-bottom: 20px;
+        border-bottom: 4px solid darken($bg-indigo, 20%);
+        padding: 10px 40px;
+        background: $bg-indigo;
         h1{
-            margin-bottom: 0;
+            margin: 0;
             font-weight: 500;
+            color: $col-text-indigo;
+        }
+        a{
+            color: $col-text-header;
+            text-decoration: none;
         }
     }
 }

@@ -1,5 +1,5 @@
 (function (angular) {
-    var moduleName = 'profile.about';
+    var moduleName = 'profile.home';
     var componentName = 'profileHome';
     var templateUrl = 'pages/home/html/home.html';
 
@@ -8,62 +8,62 @@
         $ctrl.tags = [
             {
                 title: 'bio',
-                url: '/bio',
+                url: 'Bio',
                 class: 'profile-home--tags__color0'
             },
             {
                 title: 'javaScript',
-                url: '/java-script',
+                url: 'JavaScript',
                 class: ''
             },
             {
                 title: 'work experience',
-                url: '/work-experience',
+                url: 'WorkExperience',
                 class: 'profile-home--tags__color1'
             },
             {
                 title: 'skills',
-                url: '/skills',
+                url: 'Skills',
                 class: 'profile-home--tags__color2'
             },
             {
                 title: 'education',
-                url: '/education',
+                url: 'Education',
                 class: 'profile-home--tags__color3'
             },
             {
                 title: 'open web',
-                url: '/open-web',
+                url: 'OpenWeb',
                 class: ''
             },
             {
                 title: 'reading',
-                url: '/reading',
+                url: 'Reading',
                 class: ''
             },
             {
                 title: 'books',
-                url: '/books',
+                url: 'Books',
                 class: ''
             },
             {
                 title: 'contact me',
-                url: '/contact-me',
+                url: 'ContactMe',
                 class: 'profile-home--tags__color4'
             },
             {
                 title: 'social',
-                url: '/social',
+                url: 'Social',
                 class: ''
             },
             {
                 title: 'cv',
-                url: '/cv',
+                url: 'Cv',
                 class: 'profile-home--tags__color5'
             },
             {
                 title: 'other links',
-                url: '/other-links',
+                url: 'OtherLinks',
                 class: ''
             }
         ];
@@ -75,14 +75,6 @@
     .value('$routerRootComponent', 'profileHome')
     .component(componentName, {
         templateUrl: templateUrl,
-        controller: ProfileHomeController,
-        $routeConfig: [
-            {
-                path: '/',
-                name: 'About',
-                component: 'profileAbout',
-                useAsDefault: true
-            }
-        ]
+        controller: ProfileHomeController
     });
 })(angular);
