@@ -1,16 +1,15 @@
 
 .header {
     &--title {
-        border-bottom: 4px solid darken($bg-indigo, 20%);
-        padding: 10px 40px;
-        background: $bg-indigo;
+        padding: 10px 10%;
+        border-bottom: 4px solid $bg-gray;
+        //box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
         h1{
             margin: 0;
             font-weight: 500;
-            color: $col-text-indigo;
         }
         a{
-            color: $col-text-header;
+            color: $col-text-black;
             text-decoration: none;
         }
     }

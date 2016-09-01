@@ -64,7 +64,7 @@ linters:
     force_nesting: true
 
   NameFormat:
-    enabled: true
+    enabled: false
     convention: 'BEM' #hyphenated_lowercase # or 'BEM', or a regex pattern
 
   NestingDepth:

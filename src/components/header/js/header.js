@@ -1,7 +1,11 @@
 (function (angular) {
-    angular.module('profile.header', [])
+    var templateUrl = 'components/header/html/header.html';
+
+    angular.module('profile.header', [
+        templateUrl
+    ])
     .value('profileHeader')
     .component('profileHeader', {
-        templateUrl: 'components/header/html/header.html'
+        templateUrl: templateUrl
     });
 })(angular);

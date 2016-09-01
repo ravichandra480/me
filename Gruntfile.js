@@ -45,6 +45,10 @@ module.exports = function (grunt) {
                 files: ['src/scss/*.scss', 'src/**/**'],
                 tasks: ['clean:preBuild', 'copy:dev', 'sass:dist', 'wiredep', 'includeSource']
             },
+            html: {
+                files: ['src/**/**/html/*.html'],
+                tasks: ['html2js:dev']
+            },
             options: {
                 livereload: 1337
             }
@@ -52,7 +56,7 @@ module.exports = function (grunt) {
         copy: {
             dev: {
                 cwd: 'src/',
-                src: ['!scss', '**/**', '!tests', '!**/**/tests'],
+                src: ['**/**', '!scss/**', '!tests', '!**/**/tests/**',  '!**/**/scss/**', '!**/**/html/*.html'],
                 dest: 'dist/<%= base %>/',
                 expand: true
             },
@@ -104,7 +108,27 @@ module.exports = function (grunt) {
                     'dist/profile/css/deploy.css': 'src/scss/deploy.scss',       // 'destination': 'source'
                 }
             }
-        }
+        },
+        html2js: {
+            dev: {
+                options: {
+                    module: null,
+                    base: 'src',
+                    htmlmin: {
+                        collapseBooleanAttributes: true,
+                        collapseWhitespace: true,
+                        removeComments: true,
+                        removeScriptTypeAttributes: true,
+                        removeStyleLinkTypeAttributes: true
+                    }
+                },
+                files: [{
+                    expand: true,
+                    src: ['src/**/**/html/*.html'],
+                    ext: '.html.js'
+                }]
+            }
+        },
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
@@ -119,7 +143,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
 
     // Default task(s).
-    grunt.registerTask('default', ['clean:preBuild', 'copy:dev', 'sass:dist', 'wiredep', 'includeSource', 'concurrent']);
+    grunt.registerTask('default', ['clean:preBuild', 'copy:dev', 'sass:dist', 'html2js:dev', 'wiredep', 'includeSource', 'concurrent']);
     grunt.registerTask('build', ['copy:build', 'wiredep']);
 
 };

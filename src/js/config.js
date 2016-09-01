@@ -28,7 +28,7 @@
     .component('profileView', {
         template:
             '<profile-header></profile-header>' +
-            '<ng-outlet></ng-outlet>' +
+            '<div class="view"><ng-outlet></ng-outlet></div>' +
             '<profile-footer></profile-footer>',
         $routeConfig: [
             {

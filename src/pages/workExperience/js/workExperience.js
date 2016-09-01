@@ -1,12 +1,17 @@
 (function (angular) {
+    var moduleName = 'profile.workExperiance';
+    var componentName = 'profileWorkExperiance';
+    var templateUrl = 'pages/workExperience/html/workExperience.html';
 
     function profileWorkExperianceController() {
         var $ctrl = this;
     }
 
-    angular.module('profile.workExperiance', [])
-    .component('profileWorkExperiance', {
-        templateUrl: 'pages/workExperience/html/workExperience.html',
+    angular.module(moduleName, [
+        templateUrl
+    ])
+    .component(componentName, {
+        templateUrl: templateUrl,
         controller: profileWorkExperianceController
     });
 })(angular);

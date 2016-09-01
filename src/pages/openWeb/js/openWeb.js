@@ -1,12 +1,17 @@
 (function (angular) {
+    var moduleName = 'profile.openWeb';
+    var componentName = 'profileOpenWeb';
+    var templateUrl = 'pages/openWeb/html/openWeb.html';
 
     function profileOpenWebController() {
         var $ctrl = this;
     }
 
-    angular.module('profile.openWeb', [])
-    .component('profileOpenWeb', {
-        templateUrl: 'pages/openWeb/html/openWeb.html',
+    angular.module(moduleName, [
+        templateUrl
+    ])
+    .component(componentName, {
+        templateUrl: templateUrl,
         controller: profileOpenWebController
     });
 })(angular);

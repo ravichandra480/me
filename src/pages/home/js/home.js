@@ -69,8 +69,8 @@
         ];
     }
 
-    angular.module('profile.home', [
-        moduleName
+    angular.module(moduleName, [
+        templateUrl
     ])
     .value('$routerRootComponent', 'profileHome')
     .component(componentName, {

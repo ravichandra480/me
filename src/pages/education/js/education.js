@@ -1,12 +1,17 @@
 (function (angular) {
+    var moduleName = 'profile.education';
+    var componentName = 'profileEducation';
+    var templateUrl = 'pages/education/html/education.html';
 
     function profileEducationController() {
         var $ctrl = this;
     }
 
-    angular.module('profile.education', [])
-    .component('profileEducation', {
-        templateUrl: 'pages/education/html/education.html',
+    angular.module(moduleName, [
+        templateUrl
+    ])
+    .component(componentName, {
+        templateUrl: templateUrl,
         controller: profileEducationController
     });
 })(angular);

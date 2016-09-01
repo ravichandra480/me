@@ -1,7 +1,11 @@
 (function (angular) {
-    angular.module('profile.footer', [])
+    var templateUrl = 'components/footer/html/footer.html';
+
+    angular.module('profile.footer', [
+        templateUrl
+    ])
     .value('$routerRootComponent', 'profileFooter')
     .component('profileFooter', {
-        templateUrl: 'components/footer/html/footer.html'
+        templateUrl: templateUrl
     });
 })(angular);
