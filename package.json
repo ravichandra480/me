@@ -21,6 +21,7 @@
   "author": "Ravi Chandra R",
   "license": "ISC",
   "devDependencies": {
+    "connect-modrewrite": "^0.8.5",
     "grunt": "^1.0.1",
     "grunt-bower-concat": "^1.0.0",
     "grunt-concurrent": "^2.3.1",
@@ -32,10 +33,12 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-html2js": "^0.3.6",
     "grunt-include-source": "^1.0.0",
+    "grunt-karma": "^2.0.0",
     "grunt-wiredep": "^3.0.1",
     "gulp": "^3.9.1",
     "gulp-server-livereload": "^1.8.2",
-    "connect-modrewrite": "^0.8.5",
+    "karma": "^1.2.0",
+    "karma-wiredep": "^1.0.2",
     "serve-static": "^1.10.0"
   },
   "dependencies": {

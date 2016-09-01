@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         watch: {
             js: {
                 files: ['src/js/*.js', 'src/**/**'],
-                tasks: ['clean:preBuild', 'copy:dev', 'wiredep', 'includeSource']
+                tasks: ['karma:unit', 'clean:preBuild', 'copy:dev', 'wiredep', 'includeSource']
             },
             scss: {
                 files: ['src/scss/*.scss', 'src/**/**'],
@@ -129,6 +129,11 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        karma: {
+            unit: {
+                configFile: 'tests/unit/karma.conf.js'
+            }
+        },
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
@@ -141,6 +146,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-karma');
 
     // Default task(s).
     grunt.registerTask('default', ['clean:preBuild', 'copy:dev', 'sass:dist', 'html2js:dev', 'wiredep', 'includeSource', 'concurrent']);

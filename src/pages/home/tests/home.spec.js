@@ -1,5 +1,6 @@
-describe('billingDownload', function () {
+describe('home', function () {
 
-    it('should format downloadRequest', function () {
+    it('should format home', function () {
+        console.log('in testing home');
     });
 });

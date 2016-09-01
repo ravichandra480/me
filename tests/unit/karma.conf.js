@@ -2,30 +2,35 @@
 // Generated on Tue Aug 16 2016 11:51:07 GMT+0100 (BST)
 
 module.exports = function (config) {
+    'use strict';
+
+    console.log(require('wiredep')({
+        devDependencies: true,
+        bowerJson: require('../../bower.json'),
+        directory: 'dist/bower_components',
+    }).js);
+
     var bowerFiles = require('wiredep')({
         devDependencies: true,
-        cwd: '../',
-        bowerJson: require('../bower.json'),
+        cwd: '../../',
+        bowerJson: require('../../bower.json'),
         directory: 'dist/bower_components',
     }).js;
 
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
+        basePath: '../../',
 
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: ['jasmine'],
 
-
         // list of files / patterns to load in the browser
-        files: [
-          'src/**/**/js/*.js',
-          'src/js/*.js'
-        ],
-
+        files: bowerFiles.concat([
+            'src/**/*.js'
+        ]),
 
         // list of files to exclude
         exclude: [
@@ -63,7 +68,13 @@ module.exports = function (config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Chrome'],
+        browsers: ['PhantomJS'],
+
+        // Which plugins to enable
+        plugins: [
+            'karma-phantomjs-launcher',
+            'karma-jasmine'
+        ],
 
 
         // Continuous Integration mode
