@@ -34,6 +34,29 @@ module.exports = function (grunt) {
 
             server: {
 
+            },
+
+            e2e: {
+                options: {
+                    port: 9000,
+                    base: 'dist',
+                    keepalive: false,
+                    open: false,
+                    middleware: function (connect, options, middlewares) {
+                        middlewares.unshift(function (req, res, next) {
+                            res.setHeader('Access-Control-Allow-Origin', '*');
+                            res.setHeader('Access-Control-Allow-Methods', '*');
+                            return next();
+                        });
+
+                        middlewares.push(modRewrite(['^[^\\.]*$ /' + env.base + '/index.html [L]'])); //Matches everything that does not contain a '.' (period)
+                        options.base.forEach(function (base) {
+                            middlewares.push(serveStatic(base));
+                        });
+
+                        return middlewares;
+                    }
+                }
             }
         },
         watch: {
@@ -91,7 +114,7 @@ module.exports = function (grunt) {
             }
         },
         concurrent: {
-            watcher: ['watch', 'connect'],
+            watcher: ['watch', 'connect', 'karma:unit'],
             options: {
                 logConcurrentOutput: true
             }
@@ -134,6 +157,17 @@ module.exports = function (grunt) {
                 configFile: 'tests/unit/karma.conf.js'
             }
         },
+        protractor: {
+            options: {
+                configFile: 'tests/e2e/config.js', // Default config file
+                keepAlive: true, // If false, the grunt process stops when the test fails.
+                noColor: false, // If true, protractor will not use colors in its output.
+                args: {
+                    // Arguments passed to the command
+                }
+            },
+            all: {} // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
@@ -147,9 +181,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-protractor-runner');
 
     // Default task(s).
     grunt.registerTask('default', ['clean:preBuild', 'copy:dev', 'sass:dist', 'html2js:dev', 'wiredep', 'includeSource', 'concurrent']);
     grunt.registerTask('build', ['copy:build', 'wiredep']);
+    grunt.registerTask('e2e', ['clean:preBuild', 'copy:dev', 'sass:dist', 'html2js:dev', 'wiredep', 'includeSource', 'connect:e2e', 'protractor']);
 
 };

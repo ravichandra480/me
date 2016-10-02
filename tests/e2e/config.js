@@ -51,16 +51,63 @@ exports.config = {
     // https://code.google.com/p/selenium/wiki/DesiredCapabilities
     // and
     // https://code.google.com/p/selenium/source/browse/javascript/webdriver/capabilities.js
-    capabilities: {
-        browserName: 'chrome',
-        chromeOptions: {
-            args: ['no-sandbox', 'no-default-browser-check', 'no-first-run', 'disable-default-apps']
+    // capabilities: {
+    //     browserName: 'chrome',
+    //     chromeOptions: {
+    //         args: [
+    //             'no-sandbox',
+    //             'no-default-browser-check',
+    //             'no-first-run',
+    //             'disable-default-apps',
+    //             '--window-size=200,200'
+    //         ]
+    //     }
+    // },
+    // browsers : chrome, firefox
+    multiCapabilities: [
+        {
+            browserName: 'chrome',
+            chromeOptions: {
+                args: [
+                    '--lang=en',
+                    '--window-size=360,1200'
+                ]
+            }
+
+            // specs: ['spec.js']
+        },
+        {
+            browserName: 'chrome',
+            chromeOptions: {
+                args: [
+                    '--lang=en',
+                    '--window-size=768,1200'
+                ]
+            }
+        },
+        {
+            browserName: 'chrome',
+            chromeOptions: {
+                args: [
+                    '--lang=en',
+                    '--window-size=992,1200'
+                ]
+            }
+        },
+        {
+            browserName: 'chrome',
+            chromeOptions: {
+                args: [
+                    '--lang=en',
+                    '--window-size=1200,1200'
+                ]
+            }
         }
-    },
+    ],
 
     // A base URL for your application under test. Calls to protractor.get()
     // with relative paths will be prepended with this.
-    baseUrl: 'http://localhost:8000',
+    baseUrl: 'http://localhost:9000/profile/',
 
     // Selector for the element housing the angular app - this defaults to
     // body, but is necessary if ng-app is on a descendant of <body>
@@ -83,7 +130,7 @@ exports.config = {
         onComplete: null,
 
         // If true, display spec names.
-        isVerbose: false,
+        isVerbose: true,
 
         // If true, print colors to the terminal.
         showColors: true,

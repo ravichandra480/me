@@ -34,6 +34,7 @@
     "grunt-html2js": "^0.3.6",
     "grunt-include-source": "^1.0.0",
     "grunt-karma": "^2.0.0",
+    "grunt-protractor-runner": "^3.2.0",
     "grunt-wiredep": "^3.0.1",
     "gulp": "^3.9.1",
     "gulp-server-livereload": "^1.8.2",
